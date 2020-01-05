@@ -10,6 +10,7 @@ class OurCoolBot(discord.Client):
 
     async def on_message(self, message):
         await commands.hi(message)
+        await commands.kick(message)
 
 
 client = OurCoolBot()

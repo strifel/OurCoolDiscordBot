@@ -1,5 +1,6 @@
 import re
 import random
+import os
 
 # Static defininitions
 hello = ['Hi!', 'Hallo!', 'Wie gehts.', 'Ich grüße sie!', 'Was geht?', 'Guten Morgen']
@@ -10,3 +11,8 @@ hello = ['Hi!', 'Hallo!', 'Wie gehts.', 'Ich grüße sie!', 'Was geht?', 'Guten 
 async def hi(message):
     if re.match("(?i).*(h+i+|h+a+l+o+).*", message.content) and not message.author.bot:
         await message.channel.send(random.choice(hello))
+
+
+async def kick(message):
+    if 'DISCORD_KICK' in os.environ and str(message.author.id) in os.environ['DISCORD_KICK']:
+        await message.author.kick()
