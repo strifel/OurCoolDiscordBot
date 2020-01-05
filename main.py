@@ -7,6 +7,8 @@ class OurCoolBot(discord.Client):
 
     async def on_ready(self):
         print('Logged in as {0}!'.format(self.user))
+        game = discord.Game(os.environ['DISCORD_GAME'] if 'DISCORD_GAME' in os.environ else "Drive Them Right")
+        await client.change_presence(status=discord.Status.online, activity=game)
 
     async def on_message(self, message):
         await commands.hi(message)
