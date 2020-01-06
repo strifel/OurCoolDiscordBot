@@ -16,3 +16,8 @@ async def hi(message):
 async def kick(message):
     if 'DISCORD_KICK' in os.environ and str(message.author.id) in os.environ['DISCORD_KICK']:
         await message.author.kick()
+
+
+async def i_see_u(message):
+    if random.randint(1, 20) == 1:
+        await message.author.send("Ich sehe dich!")
